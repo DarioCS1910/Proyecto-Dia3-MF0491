@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sesion 3 - CSS Avanzado + Flexbox</title>
+  <style>
+    /* ===== RESET + BOX MODEL ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      color: rgb(50, 50, 50);
+    }
+
+    /* ===== HEADER + NAV CON FLEXBOX ===== */
+    header {
+      background-color: #2c3e50;
+      padding: 0 30px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+    }
+
+    nav h1 {
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 10px;
+    }
+
+    nav ul a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+    }
+
+    nav ul a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      border-bottom: 4px solid #e74c3c;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    /* ===== SECCION TARJETAS CON FLEXBOX ===== */
+    .seccion {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .seccion h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      border-left: 4px solid #e74c3c;
+      padding-left: 12px;
+    }
+
+    .tarjetas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: flex-start;
+    }
+
+    .tarjeta {
+      flex: 1 1 280px;
+      max-width: 320px;
+      background: white;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      border-top: 3px solid #3498db;
+    }
+
+    .tarjeta h3 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .tarjeta p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    /* ===== BOX MODEL DEMO ===== */
+    .demo-boxmodel {
+      background-color: rgba(0, 123, 255, 0.08);
+      border-left: 4px solid #007bff;
+      padding: 20px;
+      margin: 30px 0;
+      border-radius: 4px;
+    }
+
+    .demo-boxmodel code {
+      display: block;
+      background: #2c3e50;
+      color: #2ecc71;
+      padding: 15px;
+      border-radius: 4px;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: #2c3e50;
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER CON NAVBAR FLEXBOX -->
+  <header>
+    <nav>
+      <h1>MF0491 - Sesion 3</h1>
+      <ul>
+        <li><a href="#conceptos">Conceptos</a></li>
+        <li><a href="#flexbox">Flexbox</a></li>
+        <li><a href="#boxmodel">Box Model</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h2>CSS Avanzado + Flexbox + Box Model</h2>
+    <p>Sesion 3 - 08/06/2026 - UF1841</p>
+  </div>
+
+  <!-- TARJETAS DE CONCEPTOS CON FLEXBOX -->
+  <section class="seccion" id="conceptos">
+    <h2>Conceptos Clave del Dia</h2>
+    <div class="tarjetas">
+
+      <div class="tarjeta">
+        <h3>Box Model</h3>
+        <p>Todo elemento HTML es una caja. Capas: <strong>margin > border > padding > content</strong>. Usar <code>box-sizing: border-box</code> para que el padding no aumente el tamano.</p>
+      </div>
+
+      <div class="tarjeta">
+        <h3>Colores CSS</h3>
+        <p>Formatos: <strong>HEX</strong> (#ff0000), <strong>RGB</strong> (rgb(255,0,0)), <strong>RGBA</strong> (rgba(255,0,0,0.5)) donde el 4to valor es la opacidad entre 0 y 1.</p>
+      </div>
+
+      <div class="tarjeta">
+        <h3>Flexbox</h3>
+        <p>Sistema de maquetacion 1D. Se activa con <strong>display: flex</strong> en el contenedor padre. Controla filas o columnas con justify-content y align-items.</p>
+      </div>
+
+      <div class="tarjeta">
+        <h3>justify-content</h3>
+        <p>Controla el <strong>eje principal</strong> (horizontal en row): flex-start | flex-end | center | space-between | space-around | space-evenly.</p>
+      </div>
+
+      <div class="tarjeta">
+        <h3>align-items</h3>
+        <p>Controla el <strong>eje cruzado</strong> (vertical en row): stretch (defecto) | flex-start | flex-end | center | baseline.</p>
+      </div>
+
+      <div class="tarjeta">
+        <h3>Unidades CSS</h3>
+        <p><strong>px</strong>: absoluto. <strong>%</strong>: relativo al padre. <strong>em</strong>: relativo al font-size del padre. <strong>rem</strong>: relativo al root html. <strong>vw/vh</strong>: % de la ventana.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DEMO BOX MODEL -->
+  <section class="seccion" id="boxmodel">
+    <h2>Demo: Box Model en codigo</h2>
+    <div class="demo-boxmodel">
+      <p>Estructura del Box Model (de afuera hacia adentro):</p>
+      <code>
+        margin: 30px auto;      /* espacio exterior */<br>
+        border: 2px solid #333; /* borde */<br>
+        padding: 20px;          /* espacio interior */<br>
+        width: 300px;           /* contenido */<br>
+        box-sizing: border-box; /* padding incluido en el ancho */<br>
+      </code>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Proyecto Dia 3 - MF0491_3 | CSS Avanzado + Flexbox | 08/06/2026</p>
+  </footer>
+
+</body>
+</html>
